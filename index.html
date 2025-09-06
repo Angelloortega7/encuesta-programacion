@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Encuesta de Programación</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Encuesta de Programación</h2>
+      <form action="guardar.php" method="POST" onsubmit="return validarFormulario()">
+        
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre..." required>
+
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+
+        <h3>1. ¿Cuál de los siguientes lenguajes es típicamente compilado y no interpretado?</h3>
+        <label><input type="radio" name="pregunta1" value="A" required> Python</label>
+        <label><input type="radio" name="pregunta1" value="B"> JavaScript</label>
+        <label><input type="radio" name="pregunta1" value="C"> C++</label>
+        <label><input type="radio" name="pregunta1" value="D"> Ruby</label>
+
+        <h3>2. ¿Qué estructura de datos es la más adecuada para implementar una cola con prioridad?</h3>
+        <label><input type="radio" name="pregunta2" value="A" required> Pila (Stack)</label>
+        <label><input type="radio" name="pregunta2" value="B"> Árbol binario</label>
+        <label><input type="radio" name="pregunta2" value="C"> Cola circular</label>
+        <label><input type="radio" name="pregunta2" value="D"> Montículo (Heap)</label>
+
+        <h3>3. ¿Cuál de las siguientes capas del modelo OSI se encarga del direccionamiento lógico y el enrutamiento?</h3>
+        <label><input type="radio" name="pregunta3" value="A" required> Capa de enlace de datos</label>
+        <label><input type="radio" name="pregunta3" value="B"> Capa de red</label>
+        <label><input type="radio" name="pregunta3" value="C"> Capa de transporte</label>
+        <label><input type="radio" name="pregunta3" value="D"> Capa de aplicación</label>
+
+        <h3>4. ¿Qué tipo de JOIN devuelve todas las filas cuando hay una coincidencia en una de las tablas?</h3>
+        <label><input type="radio" name="pregunta4" value="A" required> INNER JOIN</label>
+        <label><input type="radio" name="pregunta4" value="B"> LEFT JOIN</label>
+        <label><input type="radio" name="pregunta4" value="C"> RIGHT JOIN</label>
+        <label><input type="radio" name="pregunta4" value="D"> FULL OUTER JOIN</label>
+
+        <h3>5. ¿Cuál es la complejidad temporal del algoritmo de búsqueda binaria en el peor caso?</h3>
+        <label><input type="radio" name="pregunta5" value="A" required> O(1)</label>
+        <label><input type="radio" name="pregunta5" value="B"> O(n)</label>
+        <label><input type="radio" name="pregunta5" value="C"> O(log n)</label>
+        <label><input type="radio" name="pregunta5" value="D"> O(n log n)</label>
+
+        <button type="submit">Enviar Encuesta</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function validarFormulario() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+
+      // Validar nombre
+      const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+      if (nombre === "" || !regexNombre.test(nombre)) {
+        alert("El nombre debe contener solo letras y no puede estar vacío.");
+        return false;
+      }
+
+      // Validar correo
+      if (correo === "" || !correo.includes("@")) {
+        alert("Ingresa un correo electrónico válido con '@'.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
